@@ -5,6 +5,7 @@ import React, { Fragment, useContext, useEffect } from "react";
 import CommonModal from "../CommonModal/CommonModal";
 import { toast } from "react-toastify";
 import ComponentLevelLoader from "../Loader/ComponentLevelLoader";
+import Image from "next/image";
 
 const CartModal = () => {
   const {
@@ -84,15 +85,17 @@ const CartModal = () => {
           <ul role="list" className="-my-6 divide-y divide-gray-300">
             {cartItems.map((cartItem) => (
               <li key={cartItem.id} className="flex py-6">
-                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                  <img
+                <div className="h-24 w-24 flex-shrink-0 relative overflow-hidden rounded-md border border-gray-200">
+                  <Image
                     src={
                       cartItem &&
                       cartItem.productID &&
                       cartItem.productID.imageUrl
                     }
+                    fill={true}
+                    objectFit="cover"
                     alt="Cart Item"
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-center"
                   />
                 </div>
                 <div className="ml-4 flex flex-1 flex-col">

@@ -60,7 +60,7 @@ const Login = () => {
       localStorage.setItem("user", JSON.stringify(res?.finalData?.user));
       setComponentLevelLoader({loading: false,id:""});
     } else {
-      toast.error(data.message, {
+      toast.error(res.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setIsAuthUser(false);
