@@ -35,7 +35,7 @@ const Account = () => {
   async function extractAllAddresses() {
     setPageLevelLoader(true);
     const res = await fetchAllAddresses(user?._id);
-
+    
     if (res.success) {
       setPageLevelLoader(false);
 

@@ -7,6 +7,8 @@ import { Fragment } from "react";
 export default function CommonModal({
   modalTitle,
   mainContent,
+  mainContentOne,
+  mainContentTwo,
   showButtons,
   buttonComponent,
   show,
@@ -39,7 +41,7 @@ export default function CommonModal({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Dialog.Panel className={"w-screen max-w-md"}>
+                <Dialog.Panel className={"w-screen max-w-[280px] md:max-w-md"}>
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                     <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                       {
@@ -47,7 +49,9 @@ export default function CommonModal({
                         <Dialog.Title>{modalTitle}</Dialog.Title>
                       </div> : null
                       }
-                      <div className="mt-20">{mainContent}</div>
+                      {mainContent ? <div className="mt-24">{mainContent}</div> : ""} 
+                      {mainContentOne ? <div className="mt-10">{mainContentOne}</div> : ""} 
+                      {mainContentTwo ? <div className="mt-10">{mainContentTwo}</div> : ""}  
                     </div>
                     {showButtons ? (
                       <div className="border-none px-4 py-6 sm:px-6">

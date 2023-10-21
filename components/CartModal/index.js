@@ -6,6 +6,7 @@ import CommonModal from "../CommonModal/CommonModal";
 import { toast } from "react-toastify";
 import ComponentLevelLoader from "../Loader/ComponentLevelLoader";
 import Image from "next/image";
+import { updateAddress } from "@/app/services/address";
 
 const CartModal = () => {
   const {
@@ -23,7 +24,7 @@ const CartModal = () => {
 
   async function extractAllCartItems() {
     const res = await getAllCartItems(user?._id);
-
+    console.log(res,"cart items");
     if (res.success) {
       const updatedData =
         res.data && res.data.length
@@ -44,6 +45,7 @@ const CartModal = () => {
               },
             }))
           : [];
+          console.log(updatedData);
       setCartItems(updatedData);
       localStorage.setItem("cartItems", JSON.stringify(updatedData));
     }
