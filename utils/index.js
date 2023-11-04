@@ -194,13 +194,13 @@ export const AvailableSizes = [
 
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyCGF4X1bl-P9nFmV674mLqkT_2HBfZZxyA",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "aishwaryaproject-ecommerce.firebaseapp.com",
   projectId: "aishwaryaproject-ecommerce",
   storageBucket: "aishwaryaproject-ecommerce.appspot.com",
-  messagingSenderId: "753923891274",
-  appId: "1:753923891274:web:77f55db1f8208cb8ab86b3",
-  measurementId: "G-YZT8H464FL"
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID
 };
 
 export const firebaseStorageURL = "gs://aishwaryaproject-ecommerce.appspot.com"

@@ -9,6 +9,8 @@ import {
   getAllOrdersForAllUsers,
   updateStatusOfOrder,
 } from "../services/orders";
+import { toast } from "react-toastify";
+import Notification from "@/components/Notification";
 
 export default function AdminView() {
   const {
@@ -27,7 +29,7 @@ export default function AdminView() {
 
     console.log(res);
     console.log(user._id);
-    if (res.success) {
+    if (res.success === true) {
       setPageLevelLoader(false);
       setAllOrdersForAllUsers(
         res.data && res.data.length
@@ -36,6 +38,11 @@ export default function AdminView() {
       );
     } else {
       setPageLevelLoader(false);
+      console.log("else condition");  
+      console.log(res.message);
+      toast.error("Token Expired! Please Login Again!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
   }
   console.log(allOrdersForAllUsers, "AAAAAAAAAA");
@@ -43,8 +50,6 @@ export default function AdminView() {
   useEffect(() => {
     if (user !== null) extractAllOrdersForAllUsers();
   }, [user]);
-
-  console.log(allOrdersForAllUsers);
 
   async function handleUpdateOrderStatus(getItem) {
     setComponentLevelLoader({ loading: true, id: getItem._id });
@@ -168,6 +173,7 @@ export default function AdminView() {
           </div>
         </div>
       </div>
+      <Notification />
     </section>
   );
 }

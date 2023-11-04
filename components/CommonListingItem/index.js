@@ -31,7 +31,19 @@ const CommonListingItem = ({ data }) => {
                   <ProductButton item={item} />
                 </article>
               ))
-            : null}
+            : <section className="h-auto p-2 md:p-5 col-span-4 bg-gray-200">
+            <div className="mx-auto md:px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto my-2 md:my-8 max-w-screen-xl px-4 sm:px-6 lg:px-8 ">
+                <div className="bg-white shadow">
+                  <div className="px-4 py-6 sm:px-8 sm:py-10 flex flex-col gap-5">
+                    <h1 className="font-bold text-lg flex justify-center">
+                      No Product Found
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>}
         </div>
       </div>
       <Notification />

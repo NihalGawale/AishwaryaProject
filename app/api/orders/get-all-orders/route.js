@@ -13,7 +13,7 @@ export async function GET(req) {
     if (isAuthUser) {
       const { searchParams } = new URL(req.url);
       const id = searchParams.get("id");
-      console.log(id,"IIIIIDDDDD");
+    
       const extractAllOrders = await Order.find({ user: id }).populate(
         "orderItems.product"
       );

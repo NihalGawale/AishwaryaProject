@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 
 import { GlobalContext } from "@/context";
@@ -8,6 +8,7 @@ import { useContext, useEffect } from "react";
 import { PulseLoader } from "react-spinners";
 import { getOrderDetails } from "@/app/services/orders";
 import Image from "next/image";
+
 const OrderDetails = () => {
   const {
     pageLevelLoader,
@@ -17,7 +18,6 @@ const OrderDetails = () => {
     user,
   } = useContext(GlobalContext);
 
-  
   const params = useParams();
   const router = useRouter();
 
@@ -26,14 +26,15 @@ const OrderDetails = () => {
 
     const res = await getOrderDetails(params["order-details"]);
 
-    if (res.success) {
+    console.log(res, "order-details");
+    if (res.success === true) {
       setPageLevelLoader(false);
       setOrderDetails(res.data);
+
+      console.log(res, "order-details");
     } else {
       setPageLevelLoader(false);
     }
-
-    console.log(res);
   }
 
   useEffect(() => {
@@ -53,26 +54,28 @@ const OrderDetails = () => {
     );
   }
 
-
   return (
     <div className="py-14 px-4 md:px-6">
       <div className="flex justify-start items-start space-y-2 flex-col">
-        <h1 className="text-3xl lg:text-4xl font-bold leading-7 lg:leading-9 text-gray-900">
+        <h1 className=" text-lg mb-3 flex-1 lg:text-4xl font-bold leading-7 lg:leading-9 text-gray-900">
           Order #{orderDetails && orderDetails._id}
         </h1>
-        <p className="text-base font-medium leadong-6 text-gray-600">
-          {orderDetails &&
-            orderDetails.createdAt &&
-            orderDetails.createdAt.split("T")[0]}{" "}
-          |{" "}
-          {orderDetails &&
-            orderDetails.createdAt &&
-            orderDetails.createdAt.split("T")[1].split(".")[0]}
-        </p>
+        <div className="text-base font-medium leadong-6 text-gray-600 flex space-x-2">
+          <p>
+            {orderDetails &&
+              orderDetails.createdAt &&
+              orderDetails.createdAt.split("T")[0]}
+          </p>
+          <p>
+            {orderDetails &&
+              orderDetails.createdAt &&
+              orderDetails.createdAt.split("T")[1].split(".")[0]}
+          </p>
+        </div>
       </div>
       <div className="mt-10 flex flex-col justify-center xl:flex-row items-stretch w-full xl:space-x-8 md:space-y-6 xl:space-y-0">
         <div className="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
-          <div className="flex flex-col justify-start items-start bg-gray-50 px-4 py-4 md:p-6 xl:p-8 w-full">
+          <div className="flex flex-col justify-start items-start bg-gray-50 px-4 py-4 md:p-6 xl:p-8 w-full ">
             <p className="font-bol text-lg ">Your order summary</p>
             {orderDetails &&
             orderDetails.orderItems &&
@@ -80,14 +83,13 @@ const OrderDetails = () => {
               ? orderDetails.orderItems.map((item) => (
                   <div
                     key={item._id}
-                    className="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full"
+                    className="mt-4 gap-y-3 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full"
                   >
-                    <div className="pb-4 md:pb-8 relative w-full h-40 md:w-40 hidden md:block">
+                    <div className="pb-4 md:pb-8 relative w-full h-40 md:w-40 block">
                       <Image
-                      fill={true}
-                      objectFit="cover"
-                      src={item && item.product && item.product.imageUrl}
-                        className=""
+                        fill={true}
+                        objectFit="cover"
+                        src={item && item.product && item.product.imageUrl}
                       />
                     </div>
                     <div className="border-b border-gray-300 md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
@@ -97,7 +99,7 @@ const OrderDetails = () => {
                         </h3>
                       </div>
                       <div className="w-full flex justify-between items-start space-x-8">
-                        <h3 className="text-xl font-semibold leading-6 text-gray-900">
+                        <h3 className="text-xl lg:text-2xl font-semibold leading-6 text-gray-900">
                           ${item && item.product && item.product.price}
                         </h3>
                       </div>
@@ -153,17 +155,19 @@ const OrderDetails = () => {
               <div className="flex justify-center md:justify-start items-center md:items-start flex-col space-y-4 xl:mt-8">
                 <p>Shipping Address</p>
                 <p>
-                  Address :{" "}
-                  {orderDetails && orderDetails.shippingAddress.address}
-                </p>
-                <p>City :{orderDetails && orderDetails.shippingAddress.city}</p>
-                <p>
-                  Country :{" "}
-                  {orderDetails && orderDetails.shippingAddress.country}
+                  Address :
+                  {orderDetails && orderDetails.shippingAddress?.address}
                 </p>
                 <p>
-                  Postal Code :{" "}
-                  {orderDetails && orderDetails.shippingAddress.postalCode}
+                  City :{orderDetails && orderDetails.shippingAddress?.city}
+                </p>
+                <p>
+                  Country :
+                  {orderDetails && orderDetails.shippingAddress?.country}
+                </p>
+                <p>
+                  Postal Code :
+                  {orderDetails && orderDetails.shippingAddress?.postalCode}
                 </p>
               </div>
             </div>

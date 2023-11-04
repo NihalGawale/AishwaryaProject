@@ -26,6 +26,7 @@ export default function Home() {
   }, []);
 
   console.log(products);
+ 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between px-16 py-10 md:p-24">
       <section className="">
@@ -49,8 +50,8 @@ export default function Home() {
           </div>
           <div className="relative lg:mt-0 h-32 lg:h-full lg:col-span-5 flex">
             <Image
-             fill={true}
-             objectFit="cover"
+              fill={true}
+              objectFit="cover"
               src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
               alt="Explore Shop Collection"
             />
@@ -93,17 +94,18 @@ export default function Home() {
                               fill={true}
                               objectFit="cover"
                               alt="Sale Product Item"
-                          
                             />
                           </div>
                           <div className="mt-3">
                             <h3 className="font-medium text-gray-900">
                               {productItem.name}
                             </h3>
-                            <p className="mt-1 text-sm text-gray-800">
-                              ${productItem.price}{" "}
+                            <div className="flex flex-col">
+                              <p className="mt-1 text-sm text-gray-800">
+                                ${productItem.price}{" "}
+                              </p>
                               <span className="text-red-700">{`(-${productItem.priceDrop}%) Off`}</span>
-                            </p>
+                            </div>
                           </div>
                         </li>
                       ))
@@ -124,6 +126,7 @@ export default function Home() {
                 <Image
                   fill={true}
                   objectFit="cover"
+                  alt="category-images"
                   src="https://images.unsplash.com/photo-1618898909019-010e4e234c55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                 />
                 <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
@@ -142,6 +145,7 @@ export default function Home() {
                 <Image
                   fill={true}
                   objectFit="cover"
+                  alt="category-images"
                   src="https://images.unsplash.com/photo-1624623278313-a930126a11c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                 />
                 <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
@@ -160,6 +164,7 @@ export default function Home() {
                 <Image
                   fill={true}
                   objectFit="cover"
+                  alt="category-images"
                   src="https://images.unsplash.com/photo-1593795899768-947c4929449d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80"
                 />
                 <div className="absolute inset-0 flex flex-col items-start justify-end p-6">

@@ -82,7 +82,7 @@ export default function CommonDetails({ item }) {
               {item && item.name}
             </h1>
             <div className="mt-10 flex flex-col items-center justify-between space-y-4 botder-t border-b py-4 sm:flex-row sm:space-y-0">
-              <div className="flex items-end">
+              <div className="flex items-center">
                 <h1
                   className={`text-3xl font-bold mr-2 ${
                     item.onSale === "yes" ? "line-through" : ""
@@ -96,6 +96,7 @@ export default function CommonDetails({ item }) {
                     item.price * (item.priceDrop / 100)
                   ).toFixed(2)}`}</h1>
                 ) : null}
+                <span className="text-red-700 ml-5 font-bold">{`(-${item.priceDrop}%) Off`}</span>
               </div>
               <button
                 type="button"
