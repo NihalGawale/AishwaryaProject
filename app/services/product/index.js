@@ -21,7 +21,7 @@ export const addNewProduct = async (formData) => {
 
 export const getAllAdminProducts = async (req, res) => {
   try {
-    const res = await fetch("http://localhost:3000/api/admin/allProducts", {
+    const res = await fetch("/api/admin/allProducts", {
       method: "GET",
       cache: "no-store",
     });
