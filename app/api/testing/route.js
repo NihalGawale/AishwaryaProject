@@ -16,6 +16,7 @@ if(response){
     console.log(checkUser,"CCCCCCCCCCCCCCC");
       return  NextResponse.json({
         success: true,
+        data:checkUser,
         message: "Successfull",
       })
     
