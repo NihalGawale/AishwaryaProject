@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET (req){
 
    const response = await connectToDB();
-   console.log(response);
+  
 //   return  NextResponse.json({
 //         success: true,
 //         message: "Successfull",
