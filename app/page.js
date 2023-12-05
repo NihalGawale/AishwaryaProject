@@ -36,7 +36,7 @@ export default function Home() {
               Best Fashion Collection
             </h1>
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">
-              Discover the epitome of style and convenience with our cuttin-edge E-commerce Clothing Fashion App. Immerse yourself in a world where fashion meets innovation, and every click brings you closer to the latest trends and curated collections.
+              Discover the epitome of style and convenience with our cutting-edge E-commerce Clothing Fashion App. Immerse yourself in a world where fashion meets innovation, and every click brings you closer to the latest trends and curated collections.
             </p>
 
             <button
