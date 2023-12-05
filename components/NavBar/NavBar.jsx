@@ -54,7 +54,7 @@ const NavBar = () => {
           className={`flex flex-col p-4 md:p-0 mt-4 font-semibold  rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-white ${
             isModalView ? "border-none" : "border border-gray-100 "
           }`}
-        >
+        >   
           {isAdminView
             ? adminNavOptions.map((item) => (
                 <li
@@ -192,7 +192,7 @@ const NavBar = () => {
         showModalTitle={false}
         mainContentOne={
           <NavItems
-            isModalView={true}
+            
             isAdminView={isAdminView}
             router={router}
           />
